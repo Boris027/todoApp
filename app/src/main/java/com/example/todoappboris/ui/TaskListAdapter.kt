@@ -2,6 +2,8 @@ package com.example.todoappboris.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +12,8 @@ import com.example.todoappboris.data.Task
 import com.example.todoappboris.databinding.TaskviewBinding
 
 class TaskListAdapter private constructor():ListAdapter<Task,TaskListAdapter.TaskviewHolder>(TaskDiffCallback) {
+
+
 
     companion object{
         private var instance: TaskListAdapter?=null
@@ -26,6 +30,7 @@ class TaskListAdapter private constructor():ListAdapter<Task,TaskListAdapter.Tas
             binding.title.text = task.title
             binding.body.text = task.body
             binding.swich.isChecked = task.completed
+
         }
     }
 
@@ -40,6 +45,7 @@ class TaskListAdapter private constructor():ListAdapter<Task,TaskListAdapter.Tas
 
     override fun onBindViewHolder(holder: TaskviewHolder, position: Int) {
         holder.bind(getItem(position))
+
     }
 
 

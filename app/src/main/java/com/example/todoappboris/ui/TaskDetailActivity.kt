@@ -27,9 +27,15 @@ class TaskDetailActivity : AppCompatActivity() {
         }
 
         binding.buttonsave.setOnClickListener{
+            val title:String= binding.titulo.text.toString()
+            val body:String=binding.body.text.toString()
+            val status:Boolean=binding.swich.isChecked
 
-            repository.create(Task(4,"wenos dias","body uwu",false))
+            repository.create(Task(4,title,body,status))
             println(repository.readAll())
+            for(a in repository.readAll()){
+              println(a)
+            }
             val adapter=TaskListAdapter.getInstance()
             adapter.submitList(repository.readAll())
             finish()
